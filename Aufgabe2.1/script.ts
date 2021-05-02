@@ -108,12 +108,11 @@ Gleich sind sie bei der Namensgebung, da sind beide relativ frei.
 
 //Aufgabe 5 - Schleifen, Funktionen und andere Kontrollstrukturen
 //a)
-let _param1: number = 2;
-let _param2: number = 5;
-function multiply(): number {
+
+function multiply(_param1: number, _param2: number): number {
     return _param1 * _param2;
 }
-console.log(multiply());
+console.log(multiply(2, 4));
 //oder
 function multiply2(_n: number): number {
     return _n * _n;
@@ -183,10 +182,12 @@ for (let index1: number = 1; index1 <= 7; index1++) {
 
 //b)
 for (let index: number = 1; index <= 100; index++) {
+    
     if (index % 5 == 0) {
         console.log("Buzz");
     } else if (index % 3 == 0) {
         console.log("Fizz");
+
     } else {
         console.log(index);
     }

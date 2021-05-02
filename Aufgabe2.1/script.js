@@ -96,12 +96,10 @@ Gleich sind sie bei der Namensgebung, da sind beide relativ frei.
 */
 //Aufgabe 5 - Schleifen, Funktionen und andere Kontrollstrukturen
 //a)
-let _param1 = 2;
-let _param2 = 5;
-function multiply() {
+function multiply(_param1, _param2) {
     return _param1 * _param2;
 }
-console.log(multiply());
+console.log(multiply(2, 4));
 //oder
 function multiply2(_n) {
     return _n * _n;
