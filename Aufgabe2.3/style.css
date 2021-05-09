@@ -1,0 +1,22 @@
+.recClass {
+    background-color: #000000;
+    display         : inline-block;
+    margin-right    : 29px;
+}
+
+h1 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size  : xxx-large;
+}
+
+p {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* button {
+    display: table-caption;
+} */
+
+/* image {
+    margin-left: 50px;
+} */

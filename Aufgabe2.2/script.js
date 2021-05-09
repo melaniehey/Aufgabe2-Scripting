@@ -15,16 +15,23 @@ var Aufgabe22;
             return _num3;
         }
     }
+    // function min2(...args: number[]): number {
+    // return Math.min(args[]);
+    // }
+    // min2(2, 4, 4, 32, 2, 4);
     console.log(min(3, 6, 56));
     //b)
     console.log("Hier Aufgabe 1 b)");
-    let safeNumber = 50;
+    let safeNumber = -16;
     function isEven(_n) {
         if (_n == 0) {
             return true; //Gerade
         }
         if (_n == 1) {
             return false; //Ungerade
+        }
+        if (_n < 0) {
+            return isEven(_n += 2);
         }
         return isEven(_n -= 2);
     }
@@ -97,7 +104,16 @@ var Aufgabe22;
         return _numArray.slice(_index1, _index2); //zwischen 2 und 4 ausgeben
     }
     console.log(split(numArray, index1, index2));
-    //Testcode - ?
+    //Andere Möglichkeit
+    function split2(_numArray, _index1, _index2) {
+        let result = [];
+        for (let index = _index1; index < _index2; index++) {
+            result.push(_numArray[index]);
+        }
+        return result;
+    }
+    console.log(split2(numArray, index1, index2));
+    //Testcode
     // let arr: number[] = [5, 42, 17, 2018, -10, 60, -10010];
     // let arrBack: number[] = backwards(arr);
     // console.log(arr);

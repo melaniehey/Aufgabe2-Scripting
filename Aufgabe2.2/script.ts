@@ -3,7 +3,7 @@ namespace Aufgabe22 {
     //Aufgabe 1 
     //a)
     console.log("Aufgabe 1a)");
-    
+
     function min(_num1: number, _num2: number, _num3: number): number {
         if (_num1 < _num2 && _num1 < _num3) {
             return _num1;
@@ -13,23 +13,34 @@ namespace Aufgabe22 {
             return _num3;
         }
     }
+
+    // function min2(...args: number[]): number {
+        // return Math.min(args[]);
+    // }
+    // min2(2, 4, 4, 32, 2, 4);
+
+
     console.log(min(3, 6, 56));
 
     //b)
     console.log("Hier Aufgabe 1 b)");
 
-    let safeNumber: number = 50;
+    let safeNumber: number = -16;
     function isEven(_n: number): boolean {  //boolean
         if (_n == 0) {
             return true; //Gerade
         }
         if (_n == 1) {
             return false; //Ungerade
-        } 
+        }
+        if (_n < 0) {
+            return isEven(_n += 2);
+        }
         return isEven(_n -= 2);
     }
     console.log(isEven(safeNumber));
-    
+    //Bei -1 geht es ins Unendliche, da es nie 0 oder 1 wird. Es geht immer weiter -3, -5, ...
+    //Lösung ins plus gehen
     //c) 1
     interface SchoolSystem {
         firstName: string;
@@ -90,7 +101,7 @@ namespace Aufgabe22 {
         allStudentsArray2[index].showInfo2();
 
     }
-    
+
     //Aufgabe2 - Arrays
     //a)
     console.log("Hier aufgabe 2a)");
@@ -126,8 +137,18 @@ namespace Aufgabe22 {
         return _numArray.slice(_index1, _index2); //zwischen 2 und 4 ausgeben
     }
     console.log(split(numArray, index1, index2));
-    
-    //Testcode - ?
+
+    //Andere Möglichkeit
+    function split2(_numArray: number[], _index1: number, _index2: number): number[] {
+        let result: number[] = [];
+        for (let index: number = _index1; index < _index2; index++) {
+            result.push(_numArray[index]);
+        }
+        return result;
+    }
+    console.log(split2(numArray, index1, index2));
+
+    //Testcode
 
     // let arr: number[] = [5, 42, 17, 2018, -10, 60, -10010];
     // let arrBack: number[] = backwards(arr);
@@ -168,7 +189,7 @@ namespace Aufgabe22 {
     context.lineTo(150, 130);
     context.lineTo(250, 220);
     context.closePath();
-    context.fillStyle = "black"; 
+    context.fillStyle = "black";
     context.fill();
     context.strokeStyle = "black";
     context.stroke();
@@ -183,18 +204,18 @@ namespace Aufgabe22 {
     context.stroke();
 
     context.beginPath();
-    context.arc(400, 270, 90, 0, Math.PI * 2); 
+    context.arc(400, 270, 90, 0, Math.PI * 2);
     context.fillStyle = "darkgreen";
     context.fill();
-    context.closePath();    
+    context.closePath();
 
     //Cloud
     context.beginPath();
-    context.arc(370, 60, 20, 0, Math.PI * 2); 
-    context.arc(390, 80, 20, 0, Math.PI * 2); 
-    context.arc(390, 40, 20, 0, Math.PI * 2); 
-    context.arc(420, 70, 20, 0, Math.PI * 2); 
-    context.arc(450, 60, 20, 0, Math.PI * 2); 
+    context.arc(370, 60, 20, 0, Math.PI * 2);
+    context.arc(390, 80, 20, 0, Math.PI * 2);
+    context.arc(390, 40, 20, 0, Math.PI * 2);
+    context.arc(420, 70, 20, 0, Math.PI * 2);
+    context.arc(450, 60, 20, 0, Math.PI * 2);
     context.arc(420, 50, 20, 0, Math.PI * 2);
     context.strokeStyle = "white";
     context.fill();
@@ -203,7 +224,7 @@ namespace Aufgabe22 {
     //Sun
     context.beginPath();
     context.arc(canvas.width / 2, 100, 40, 0, Math.PI * 2); //x=100, y=100 ist das Zentrum des Kreises, 40 ist der Radius, 0 für Startangle, Math.PI * 2 für endangle (Wird ein geschlossener Kreis)
-    context.fillStyle = "yellow"; 
+    context.fillStyle = "yellow";
     context.fill();
 
     //TEST
