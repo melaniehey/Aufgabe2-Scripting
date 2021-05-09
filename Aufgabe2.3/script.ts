@@ -57,31 +57,8 @@ namespace Aufgabe2_3 {
     }
 
     //A3 b)
-    // function bestimmeGesicht(_eyeColour: HumanFace): HTMLElement {  //funktioniert ohne daten ändern (DYNAMISCH) wenn ich noch ein face4 hinzufüge, muss ich bei der function nichts ändern-> veralgemeinert, also nur in data ändern
-    //     let div: HTMLDivElement = document.createElement("div");
-
-    //     let image: HTMLImageElement = document.createElement("img");
-    //     image.src = _eyeColour.image;
-    //     div.appendChild(image);
-    //     let button: HTMLButtonElement = document.createElement("button");
-    //     button.innerText = "eyeColour: " + _eyeColour;
-    //     div.appendChild(button);
-    //     //Funktion für alles erstellt div (beingaltet image und button) das wird dann ausgegeben
-    //     //
-    //     return div; //Speichert was man erstellt hat
-    // }
-    // //läuft durch alle faces und nimmt das auf das gedrückt wurde
-    // for (let i: number = 0; i < allFacesArray.length; i++) {
-    //     let x: HTMLElement = bestimmeGesicht(allFacesArray[i]);
-
-    //     document.body.appendChild(x);
-    // }
-
-    // document.addEventListener("click", showeyeColour);
-
-    //b)
     //funktioniert ohne daten ändern (DYNAMISCH) wenn ich noch ein face4 hinzufüge, 
-    //muss ich bei der function nichts ändern-> veralgemeinert, also nur in data ändern.
+    //muss ich bei der function nichts ändern-> verallgemeinert, also nur in data ändern.
     //Funktion für alles erstellt div (beingaltet image und button) das wird dann ausgegeben
     function generateFaceElement(_face: HumanFace): HTMLElement {
         let div: HTMLDivElement = document.createElement("div");
