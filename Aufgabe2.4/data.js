@@ -19,6 +19,10 @@ var Aufgabe2_4;
     // export let allLegArray: HumanLeg[] = [leg1, leg2, leg3];
     //A1 a)
     //gespeicherte Daten/Arrays von oben im TS-Objekt in einen JSON String konvertiert:
+    //generiert:
+    // let myIceCream: Ice = {waffles: waffles, scoops: scoops, creams: creams};
+    // console.log(JSON.stringify(myIceCream));
+    //von Hand:
     Aufgabe2_4.humanPartsJSON = `
         {
         "face": [
