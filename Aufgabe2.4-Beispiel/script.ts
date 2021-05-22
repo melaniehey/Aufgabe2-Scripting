@@ -1,41 +1,4 @@
-namespace Aufgabe2_4 {
-
-
-    //Interface für A.1 a)
-    export interface HumanSelection {
-
-        face?: HumanFace[];
-        body?: HumanBody[];
-        leg?: HumanLeg[];
-        // ? ist notwendig wegen A1 b)
-    }
-
-    export interface Human {
-        face: HumanFace;
-        body: HumanBody;
-        leg: HumanLeg;
-        image: string; //wegen allgemeine Funktion hinzugefügt
-
-    }
-
-    export interface HumanFace {
-        eyeColour: string;
-        image: string;
-    }
-
-
-    export interface HumanBody {
-        skinColour: string;
-        image: string;
-    }
-
-
-
-    export interface HumanLeg {
-        shoeColour: string;
-        image: string;
-    }
-
+namespace Aufgabe2_4_Beispiel {
 
     //A.1 a)
     let humanSelection: HumanSelection;
@@ -43,31 +6,9 @@ namespace Aufgabe2_4 {
     function readData(): void {
         humanSelection = JSON.parse(humanPartsJSON);
     }
-
-
     readData();
-    // console.log(humanSelection);
 
-    //Alle 3 Funktionen in einer (mach ich nicht weil die ClassList1, 2, 3 nicht funktionieren. Ist mir nicht wert die Aufgabe1 c) umzuschreiben)
-    // function generateAllHumanElements(_humanParts: Human): HTMLElement {
-    //     let div: HTMLDivElement = document.createElement("div");
-    //     //ClassList 1, 2, 3 ???
-    //     let image: HTMLImageElement = document.createElement("img");
-    //     image.src = _humanParts.image;
-    //     div.appendChild(image);
-    //     let button: HTMLButtonElement = document.createElement("button");
-    //     button.addEventListener("click", showeyeColour);
-    //     // button.dataset.face = _humanParts.face.toString();  //Wird nicht mehr gebraucht da die Auswahl nicht mehr in der Konsole ausgegeben werden muss
-    //     button.innerText = _humanParts.description;  //description: Bei der data.ts statt eyeColour und skinColour einfach mit "description" benennen. Dann kann man das da einsetzten und es wir auch allgemein.
-    //     div.appendChild(button);
-    //     return div;
-    // }
-
-    //Einzelne Funktionen
-
-    //funktioniert ohne daten ändern (DYNAMISCH) wenn ich noch ein face4 hinzufüge, 
-    //muss ich bei der function nichts ändern-> verallgemeinert, also nur in data ändern.
-    //Funktion für alles erstellt div (beingaltet image und button) das wird dann ausgegeben
+    //Funktionen für Face, Body, Leg
     function generateFaceElement(_face: HumanFace): HTMLDivElement {
         let div: HTMLDivElement = document.createElement("div");
         div.classList.add("step1");
@@ -81,34 +22,30 @@ namespace Aufgabe2_4 {
         button.dataset.eyeColour = _face.eyeColour.toString();
         button.innerText = "eyeColour: " + _face.eyeColour;
         div.appendChild(button);
-        return div; //Speichert was man erstellt hat
+        return div;
     }
-    //läuft durch alle faces und nimmt das auf das gedrückt wurde
     for (let i: number = 0; i < humanSelection.face.length; i++) {
         let x: HTMLElement = generateFaceElement(humanSelection.face[i]);
         document.body.appendChild(x);
     }
     function showeyeColour(_event: MouseEvent): void {
-        // console.log(_event.target);
         let target: HTMLElement = <HTMLElement>_event.target;
-        // console.log(target.dataset.eyeColour);
         for (let i: number = 0; i < humanSelection.face.length; i++) {
             if (humanSelection.face[i].eyeColour.toString() == target.dataset.eyeColour) {
                 // console.log(humanSelection.face[i]);
             }
         }
+        //A.1 b)
         sessionStorage.setItem("eyeColour", target.dataset.eyeColour);
-        let imagevordemButton: HTMLImageElement = <HTMLImageElement> target.previousSibling;
+        let imagevordemButton: HTMLImageElement = <HTMLImageElement>target.previousSibling;
         sessionStorage.setItem("eyeColourimage", imagevordemButton.src);
         console.log(imagevordemButton.src);
-       
+
     }
-    //--------------
 
     function generateBodyElement(_body: HumanBody): HTMLElement {
         let div: HTMLDivElement = document.createElement("div");
         div.classList.add("step2");
-        // div.classList.add("Page2");
 
         let image: HTMLImageElement = document.createElement("img");
         image.src = _body.image;
@@ -119,35 +56,22 @@ namespace Aufgabe2_4 {
         button.dataset.skinColour = _body.skinColour.toString();
         button.innerText = "skinColour: " + _body.skinColour;
         div.appendChild(button);
-
         return div;
     }
-    // for (let i: number = 0; i < humanSelection.body.length; i++) {
-    //     let x: HTMLElement = generateBodyElement(humanSelection.body[i]);
 
-    //     document.body.appendChild(x);
-    // }
     function showskinColour(_event: MouseEvent): void {
-
-        // console.log(_event.target);
-
         let target: HTMLElement = <HTMLElement>_event.target;
-        // console.log(target.dataset.skinColour);
-
         for (let i: number = 0; i < humanSelection.body.length; i++) {
-
             if (humanSelection.body[i].skinColour.toString() == target.dataset.skinColour) {
                 // console.log(humanSelection.body[i]);
             }
         }
-
+        //A.1 b)
         sessionStorage.setItem("skinColour", target.dataset.skinColour);
-        // sessionStorage.setItem("skinColourimage", target.dataset.image);
-        let imagevordemButton: HTMLImageElement = <HTMLImageElement> target.previousSibling;
+        let imagevordemButton: HTMLImageElement = <HTMLImageElement>target.previousSibling;
         sessionStorage.setItem("skinColourimage", imagevordemButton.src);
     }
 
-    //-------------
     function generateLegElement(_leg: HumanLeg): HTMLElement {
         let div: HTMLDivElement = document.createElement("div");
         div.classList.add("step3");
@@ -162,44 +86,30 @@ namespace Aufgabe2_4 {
         button.dataset.shoeColour = _leg.shoeColour.toString();
         button.innerText = "shoeColour: " + _leg.shoeColour;
         div.appendChild(button);
-
         return div;
     }
-    // for (let i: number = 0; i < humanSelection.leg.length; i++) {
-    //     let x: HTMLElement = generateLegElement(humanSelection.leg[i]);
-
-    //     document.body.appendChild(x);
-    // }
 
     function showshoeColour(_event: MouseEvent): void {
-
-        // console.log(_event.target);
-
         let target: HTMLElement = <HTMLElement>_event.target;
-        // console.log(target.dataset.shoeColour);
-
         for (let i: number = 0; i < humanSelection.leg.length; i++) {
-
             if (humanSelection.leg[i].shoeColour.toString() == target.dataset.shoeColour) {
                 // console.log(humanSelection.leg[i]);
             }
         }
-        //A1.b)
+        //A.1 b)
         sessionStorage.setItem("shoeColour", target.dataset.shoeColour);
-        // sessionStorage.setItem("shoeColourimage", target.dataset.image);
-        let imagevordemButton: HTMLImageElement = <HTMLImageElement> target.previousSibling;
+        let imagevordemButton: HTMLImageElement = <HTMLImageElement>target.previousSibling;
         sessionStorage.setItem("shoeColourimage", imagevordemButton.src);
     }
 
     //A.1 b) --> bzw siehe unter den drei jeweiligen Funtionen
     //sessionStorage
-    // let selection: HumanSelection = {};
-    // // nutzen was ich im session Storage hbae, WENN da etwas drin ist.
-    // let storedSelection: string = sessionStorage.getItem("selection");
-    // if (storedSelection) {
-    //     selection = JSON.parse(storedSelection);
-    // }
-    
+    let selection: HumanSelection = {};
+    // nutzen was ich im session Storage hbae, WENN da etwas drin ist.
+    let storedSelection: string = sessionStorage.getItem("selection");
+    if (storedSelection) {
+        selection = JSON.parse(storedSelection);
+    }
 
     let nextButton: HTMLCollection = document.getElementsByClassName("next");  //--> Damit ich auf die neue "seite" kann
     let currentStep: number = 1;
@@ -207,13 +117,10 @@ namespace Aufgabe2_4 {
         nextButton[index].addEventListener("click", nextStep);
     }
 
-
-    //A.1 c) (Version 2)
-    //Eine HTML Seite und wenn man auf den Button "next" klickt, 
-    //baut es die seite neu auf (innerHTML Seite clear)
+    //A.1 c)
     function nextStep(): void {
         let display: HTMLDivElement = <HTMLDivElement>document.getElementById("displayChoice");
-
+        auswahl();
         if (currentStep == 1) {
             let step1: HTMLCollection = document.getElementsByClassName("step1");
 
@@ -244,9 +151,6 @@ namespace Aufgabe2_4 {
             for (let index: number = 0; index < step2.length; index) {
 
                 step2[index].remove();
-
-                // console.log(index);
-
             }
             for (let i: number = 0; i < humanSelection.leg.length; i++) {
                 let x: HTMLElement = generateLegElement(humanSelection.leg[i]);
@@ -268,52 +172,47 @@ namespace Aufgabe2_4 {
 
                 step3[index].remove();
             }
-
-
         }
     }
 
+    //A.d
+    function auswahl(): void {
 
-    //A.1 d)
-    //soll angezeigen was bisher ausgewählt wurde
+        let selectionPreview: HTMLElement = <HTMLElement>document.getElementById("alreadySelected"); //siehe id in index.html
 
-    let previousChoice: HTMLDivElement = <HTMLDivElement>document.getElementById("previousChoice");
-    previousChoice.classList.add("allPreviousChoices");
+        selectionPreview.innerHTML = "";
 
-    if (document.querySelector("title").getAttribute("id") == "step2") {  //Step2 oder page2?
-        let choiceImage: HTMLImageElement = document.createElement("img");
-        choiceImage.src = sessionStorage.getItem("eyeColour");
-        console.log(sessionStorage.getItem("eyeColour"));
-        
-        previousChoice.appendChild(choiceImage);
-    }
-    else if (document.querySelector("title").getAttribute("id") == "step3") {
-        let choiceImage: HTMLImageElement = document.createElement("img");
-        choiceImage.src = sessionStorage.getItem("eyeColour");
-        previousChoice.appendChild(choiceImage);
-        let choiceImage2: HTMLImageElement = document.createElement("img");
-        choiceImage2.src = sessionStorage.getItem("skinColour");
-        previousChoice.appendChild(choiceImage2);
-    }
-    else if (document.querySelector("title").getAttribute("id") == "step4") {
-        let choiceImage: HTMLImageElement = document.createElement("img");
-        choiceImage.src = sessionStorage.getItem("eyeColour");
-        previousChoice.appendChild(choiceImage);
-        let choiceImage2: HTMLImageElement = document.createElement("img");
-        choiceImage2.src = sessionStorage.getItem("skinColour");
-        previousChoice.appendChild(choiceImage2);
-        let choiceImage3: HTMLImageElement = document.createElement("img");
-        choiceImage3.src = sessionStorage.getItem("shoeColour");
-        previousChoice.appendChild(choiceImage3);
+        if (sessionStorage.getItem("eyeColourimage"))
+            selectionPreview.appendChild(createImage(sessionStorage.getItem("eyeColourimage")));
+        if (sessionStorage.getItem("skinColourimage"))
+            selectionPreview.appendChild(createImage(sessionStorage.getItem("skinColourimage")));
+        if (sessionStorage.getItem("shoeColourimage"))
+            selectionPreview.appendChild(createImage(sessionStorage.getItem("shoeColourimage")));
+
+        // if (selection.face) { //wenn ein head gewählt wurde
+        //     selectionPreview.appendChild(createImage(selection.face.image)); //soll es zusehen sein
+        // } else { //wenn nicht
+        //     selectionPreview.appendChild(createImage("./img/none.png")); //soll es kein bild anzeigen
+        // }
+        // if (selection.body) {
+        //     selectionPreview.appendChild(createImage(selection.body.image));
+        // } else {
+        //     selectionPreview.appendChild(createImage("./img/none.png"));
+        // }
+        // if (selection.leg) {
+        //     selectionPreview.appendChild(createImage(selection.leg.image));
+        // } else {
+        //     selectionPreview.appendChild(createImage("./img/none.png"));
+        // }
     }
 
-    //A2
-    let choiceImage: HTMLImageElement = document.createElement("img");
-    choiceImage.src = sessionStorage.getItem("eyeColourimage");
-    previousChoice.appendChild(choiceImage);
-    choiceImage.src = sessionStorage.getItem("skinColourimage");
-    previousChoice.appendChild(choiceImage);
-    choiceImage.src = sessionStorage.getItem("shoeColourimage");
-    previousChoice.appendChild(choiceImage);
+
+
+    function createImage(_src: string): HTMLImageElement { //funktion kreiert und returnt das image, weil die DIV-Funktion von oben nicht damit funktioniert? 
+        //diese bilder sollen ohne button und description (div) angezeigt werden.
+        let img: HTMLImageElement = document.createElement("img");
+        img.src = _src;
+        return img;
+    }
 
 }

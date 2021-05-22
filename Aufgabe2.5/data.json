@@ -1,0 +1,44 @@
+{
+    "face": [
+        {
+            "eyeColour": "brown",
+            "image": "Bilder/Frau1Face.PNG"
+        },
+        {
+            "eyeColour": "green",
+            "image": "Bilder/Frau2Face.PNG"
+        },
+        {
+            "eyeColour": "red",
+            "image": "Bilder/TypFace.PNG"
+        }
+    ],
+    "body": [
+        {
+            "skinColour": "brown",
+            "image": "Bilder/Frau1Body.PNG"
+        },
+        {
+            "skinColour": "green",
+            "image": "Bilder/Frau2Body.PNG"
+        },
+        {
+            "skinColour": "red",
+            "image": "Bilder/TypBody.PNG"
+        }
+    ],
+    "leg": [
+        {
+            "shoeColour": "brown",
+            "image": "Bilder/Frau1Leg.PNG"
+        },
+        {
+            "shoeColour": "green",
+            "image": "Bilder/Frau2Leg.PNG"
+        },
+        {
+            "shoeColour": "red",
+            "image": "Bilder/TypLeg.PNG"
+        }
+    ]
+}

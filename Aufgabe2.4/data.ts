@@ -38,21 +38,21 @@ namespace Aufgabe2_4 {
         
             {
                 "eyeColour": "brown",
-                "image": "Bilder/Frau1Face.png"
+                "image": "Bilder/Frau1Face.PNG"
             },
             {
                 "eyeColour": "green",
-                "image": "Bilder/Frau2Face.png"
+                "image": "Bilder/Frau2Face.PNG"
             },
             {
                 "eyeColour": "red",
-                "image": "Bilder/TypFace.png"
+                "image": "Bilder/TypFace.PNG"
             }
         ],
         "body": [
             {
                 "skinColour": "brown",
-                "image": "Bilder/Frau1Body.png"
+                "image": "Bilder/Frau1Body.PNG"
             },
             {
                 "skinColour": "green",
