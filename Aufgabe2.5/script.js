@@ -15,7 +15,7 @@ var Aufgabe2_5;
         humanSelection = await response.json();
         auswahl(); //nextStep?
     }
-    readData("C:/Users/melan/OneDrive/Dokumente/SoSe21/GiS/Aufgabe2-Scripting/Aufgabe2.5/data.js"); //link von github
+    readData("https://github.com/melaniehey/Aufgabe2-Scripting/blob/main/Aufgabe2.5/data.json"); //link von github
     console.log(humanSelection);
     //Funktionen für Face, Body, Leg
     function generateFaceElement(_face) {
