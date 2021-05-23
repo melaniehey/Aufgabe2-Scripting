@@ -13,7 +13,6 @@ namespace Aufgabe2_5 {
     readData("https://melaniehey.github.io/Aufgabe2-Scripting/Aufgabe2.5/data.json"); //link von githubPAGES
 
 
-
     //Funktionen für Face, Body, Leg
     function generateFaceElement(_face: HumanFace): HTMLDivElement {
         let div: HTMLDivElement = document.createElement("div");
@@ -204,31 +203,6 @@ namespace Aufgabe2_5 {
         img.src = _src;
         return img;
     }
-
-    //A.1 a) - von A2_5
-    // let humanSelection: HumanSelection;
-
-    // function readData(): void {
-    //     humanSelection = JSON.parse(humanPartsJSON);
-    // }
-    // readData();
-
-    function communicate(_url: RequestInfo): void {
-        let promise: Promise<Response> = fetch(_url);
-        // establish the functions to call when communications 1. succeeds, 2. fails
-        promise.then(handleSuccess, handleFailure);
-    }
-
-    function handleFailure(_response: Response): void {
-        console.log("error", _response);
-    }
-
-    function handleSuccess(_response: Response): void {
-        console.log("message", _response);
-
-    }
-    communicate("https://gis-communication.herokuapp.com");
-
 
     //A.1 c) Funktion übergibt Daten an die URL und Antwort erhält
     async function sendData(_url: RequestInfo): Promise<void> {
