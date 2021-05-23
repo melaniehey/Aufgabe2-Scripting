@@ -1,22 +1,16 @@
 "use strict";
 var Aufgabe2_5;
 (function (Aufgabe2_5) {
-    //A.1 a) - von A2_5
-    // let humanSelection: HumanSelection;
-    // function readData(): void {
-    //     humanSelection = JSON.parse(humanPartsJSON);
-    // }
-    // readData();
     //A.1 b)
     let humanSelection;
     async function readData(_url) {
         let response = await fetch(_url);
         console.log("Response", response);
         humanSelection = await response.json();
-        auswahl(); //nextStep?
+        // auswahl(); //nextStep?
+        console.log(humanSelection);
     }
-    readData("https://github.com/melaniehey/Aufgabe2-Scripting/blob/main/Aufgabe2.5/data.json"); //link von github
-    console.log(humanSelection);
+    readData("https://melaniehey.github.io/Aufgabe2-Scripting/Aufgabe2.5/data.json"); //link von githubPAGES
     //Funktionen für Face, Body, Leg
     function generateFaceElement(_face) {
         let div = document.createElement("div");
@@ -169,21 +163,6 @@ var Aufgabe2_5;
             selectionPreview.appendChild(createImage(sessionStorage.getItem("skinColourimage")));
         if (sessionStorage.getItem("shoeColourimage"))
             selectionPreview.appendChild(createImage(sessionStorage.getItem("shoeColourimage")));
-        // if (selection.face) { //wenn ein head gewählt wurde
-        //     selectionPreview.appendChild(createImage(selection.face.image)); //soll es zusehen sein
-        // } else { //wenn nicht
-        //     selectionPreview.appendChild(createImage("./img/none.png")); //soll es kein bild anzeigen
-        // }
-        // if (selection.body) {
-        //     selectionPreview.appendChild(createImage(selection.body.image));
-        // } else {
-        //     selectionPreview.appendChild(createImage("./img/none.png"));
-        // }
-        // if (selection.leg) {
-        //     selectionPreview.appendChild(createImage(selection.leg.image));
-        // } else {
-        //     selectionPreview.appendChild(createImage("./img/none.png"));
-        // }
     }
     function createImage(_src) {
         //diese bilder sollen ohne button und description (div) angezeigt werden.
@@ -191,5 +170,43 @@ var Aufgabe2_5;
         img.src = _src;
         return img;
     }
+    //A.1 a) - von A2_5
+    // let humanSelection: HumanSelection;
+    // function readData(): void {
+    //     humanSelection = JSON.parse(humanPartsJSON);
+    // }
+    // readData();
+    function communicate(_url) {
+        let promise = fetch(_url);
+        // establish the functions to call when communications 1. succeeds, 2. fails
+        promise.then(handleSuccess, handleFailure);
+    }
+    function handleFailure(_response) {
+        console.log("error", _response);
+    }
+    function handleSuccess(_response) {
+        console.log("message", _response);
+    }
+    communicate("https://gis-communication.herokuapp.com");
+    //A.1 c) Funktion übergibt Daten an die URL und Antwort erhält
+    async function sendData(_url) {
+        let query = new URLSearchParams(sessionStorage);
+        _url = _url + "?" + query.toString();
+        let response = await fetch(_url);
+        let output = await response.json();
+        let giveBack = document.getElementById("serverOutput");
+        // giveBack.innerText = output;
+        if (output.error) {
+            giveBack.className = "Error";
+            giveBack.innerText = output.error;
+            giveBack.style.color = "red";
+        }
+        else {
+            giveBack.className = "Message";
+            giveBack.innerText = output.message;
+            giveBack.style.color = "black";
+        }
+    }
+    sendData("https://gis-communication.herokuapp.com");
 })(Aufgabe2_5 || (Aufgabe2_5 = {}));
 //# sourceMappingURL=script.js.map

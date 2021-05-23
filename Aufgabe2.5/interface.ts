@@ -29,4 +29,9 @@ namespace Aufgabe2_5 {
         shoeColour: string;
         image: string;
     }
+    
+    export interface ServerAnswer {
+        [key: string]: string; //Allgemeines Array,
+        //je nachdem wenn man error oder message rein gibt
+    }
 }
